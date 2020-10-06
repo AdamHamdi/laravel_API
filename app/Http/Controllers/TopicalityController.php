@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Topicality as ResourcesTopicality;
 use App\Topicality;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class TopicalityController extends Controller
      */
     public function show(Topicality $topicality)
     {
-        return $topicality;
+        return new ResourcesTopicality($topicality);
     }
 
     /**
@@ -74,5 +75,10 @@ class TopicalityController extends Controller
     {
         //
         $topicality->delete();
+        if($topicality){
+            return response()->json([
+                'Success'=>'La topicalitée a été supprimée avec succès'
+            ],200);
     }
+}
 }
