@@ -15,8 +15,9 @@ class TopicalityController extends Controller
      */
     public function index()
     {
-        $topicalities=Topicality::orderByDesc('created_at')->get();
-        return $topicalities->toJson(JSON_PRETTY_PRINT);
+       // $topicalities=Topicality::orderByDesc('created_at')->get();
+      // return $topicalities->toJson(JSON_PRETTY_PRINT);
+      return  ResourcesTopicality::collection(Topicality::orderByDesc('created_at')->get());
     }
 
     /**
@@ -44,6 +45,7 @@ class TopicalityController extends Controller
      */
     public function show(Topicality $topicality)
     {
+       // return $topicality;
         return new ResourcesTopicality($topicality);
     }
 

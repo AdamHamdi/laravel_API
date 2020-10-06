@@ -30,6 +30,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('posts','Api\PostController@index');
 
+Route::middleware('auth:api')->group(function(){
+    Route::apiResource('topicality','TopicalityController');
+    //Route::get('topicality','TopicalityController@index');
 
-Route::apiResource('topicality','TopicalityController');
-//Route::get('topicality','TopicalityController@index');
+});
+
